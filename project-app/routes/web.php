@@ -1,6 +1,6 @@
 <?php
 use App\Http\Controllers\ChirpController;
-
+use App\Http\Controllers\HelloController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,8 +29,22 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get("/hello", [HelloController::class,"index"]);
+
+Route::redirect("/hi", "hello");
+
+Route::view("/welcome", "auth.login");
 
 Route::resource('chirps', ChirpController::class)
 ->only(['index', 'store', 'edit', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
+
+
+Route::get('/greeting',[HelloController::class, 'index']);
+
+Route::get("user/{id}/comments/{comments}", //function(string $id, string $comments){
+    [HelloController::class, "showUser"]
+    // return "User ". $id. "Comments Count:". $comments;
+)->whereNumber("comments");
+
 require __DIR__.'/auth.php';
