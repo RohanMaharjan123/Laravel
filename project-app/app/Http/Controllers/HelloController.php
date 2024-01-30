@@ -12,4 +12,7 @@ class HelloController extends Controller
     function showUser(string $id, string $comments){
         return "User" . $id . "Comments Count" . $comments;
     }
+    function hellohi(){
+        return "Hello hi";
+    }
 }
