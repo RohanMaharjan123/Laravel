@@ -2,6 +2,7 @@
 use App\Http\Controllers\ChirpController;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\LaptopController;
+use App\Http\Controllers\MobileController;
 use App\Http\Controllers\ProfileController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
@@ -68,5 +69,6 @@ Route::middleware('log')->group(function(){
 });
 
     Route::resource('laptop',LaptopController::class)->middleware('auth');
+    Route::resource('mobile', MobileController::class)->middleware('auth');
 
 require __DIR__.'/auth.php';
