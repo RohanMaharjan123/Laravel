@@ -11,8 +11,8 @@
             </div>
 
             <div class ="mt-4">
-            <label for = "name">Modal</label>
-            <input type="text" name = "modal">
+            <label for = "name">Model</label>
+            <input type="text" name = "model">
             <x-text-input id ="name" class ="block mt-1 w-full" type ="name" name= "name" require autocomplete/>
             <x-input-error :messages="$errors->get('message')" class="mt-2" />
             </div>

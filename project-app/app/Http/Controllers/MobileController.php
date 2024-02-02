@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mobile;
-use App\Http\Requests\StoreMobileRequest;
+use Illuminate\Http\Request;
 use App\Http\Requests\UpdateMobileRequest;
 
 class MobileController extends Controller
@@ -28,19 +28,22 @@ class MobileController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreMobileRequest $request)
+    public function store(Request $request)
     {
-        //
+        //dd($request)
         $validated = $request->validate([
             'name'=>'required|string|max:255',
-            'price'=>'required|number',
+            'modal'=> 'string|max:255',
+            'price'=>'required|Integer'
         ]);
         $mobile = new Mobile();
         $mobile->name = $request->name;
-        $mobile->modal = $request->modal;
+        $mobile->model = $request->model;
         $mobile->user_id = $request->user()->id;
         $mobile->price = $request->price;
         $mobile->save();
+        // $request->user()->mobile()->create($validated);
+
         return redirect(route('mobile.index'));
     }
 

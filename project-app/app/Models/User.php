@@ -17,6 +17,11 @@ class User extends Authenticatable
     }
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function mobile(): HasMany
+    {
+        return $this->hasMany(Mobile::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
